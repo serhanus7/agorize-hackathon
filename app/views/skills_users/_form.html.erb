@@ -1,0 +1,34 @@
+<%= form_with(model: skills_user, local: true) do |form| %>
+  <% if skills_user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(skills_user.errors.count, "error") %> prohibited this skills_user from being saved:</h2>
+
+      <ul>
+      <% skills_user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--  <div class="field">-->
+    <%#= form.label :user_id, "User" %>
+    <%# options = options_from_collection_for_select(@users, 'id', 'id', form.object.user_id.to_s) %>
+    <%#= form.select :user_id, options, {}, class: 'form-control' %>
+<!--  </div>-->
+  <div class="field">
+    <%= form.label :skill_id, "Skill" %>
+    <% options = options_from_collection_for_select(@skills, 'id', 'name', form.object.skill_id.to_s) %>
+    <%= form.select :skill_id, options, {}, class: 'form-control' %>
+  </div>
+  <%= form.label :user_id, "Select users" %>
+  <div class="field">
+    <%= form.select(:user_id,
+                    options_from_collection_for_select(@users, 'id', 'id', form.object.user_id.to_s),
+                    {},
+                    {multiple: true, size: 10})
+    %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

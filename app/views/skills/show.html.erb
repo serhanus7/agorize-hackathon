@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+ID:<td><%= @skill.id %></td><br>
+Name:<td><%= @skill.name %></td><br>
+Parent:<td><%= Skill.find(@skill.parent_id).name if @skill.parent_id %></td><br>
+<%= link_to 'Edit', edit_skill_path(@skill) %> |
+<%= link_to 'Back', skills_path %>

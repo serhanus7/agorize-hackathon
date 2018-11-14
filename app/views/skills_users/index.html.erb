@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Skills Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>USER</th>
+      <th>SKILL</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skills_users.each do |skills_user| %>
+      <tr>
+        <td><%= skills_user.user_id %></td>
+        <td><%= Skill.find(skills_user.skill_id).name %></td>
+        <td><%= link_to 'Destroy', skills_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Skills User', new_skills_user_path %>

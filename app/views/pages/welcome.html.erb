@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Welcome</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>POINTS</th>
+    <th>USERS_COUNT</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @records_array.map do |row| %>
+    <tr>
+      <td><%= row['id'] %></td>
+      <td><%= row['name'] %></td>
+      <td><%= row['points'] %></td>
+      <td><%= row['users_count'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <p>
+    <%= link_to "HOME", root_url%>
+    |
+    <%= link_to "USERS", users_path%>
+    |
+    <%= link_to "SKILLS", skills_path%>
+    |
+    <%= link_to "ADD SKILLS TO USERS", skills_users_path%>
+    </p>
     <%= yield %>
   </body>
 </html>

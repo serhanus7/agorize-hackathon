@@ -1,0 +1,41 @@
+<%= form_with(model: skill, local: true) do |form| %>
+  <% if skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+
+      <ul>
+      <% skill.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parent_id, "Parent" %>
+    <% options = options_from_collection_for_select(@parents, 'id', 'name', form.object.parent_id.to_s) %>
+    <%= form.select :parent_id, options, {prompt: "Choose parent (optional)"}, class: 'form-control' %>
+  </div>
+
+  <br/>
+<!--  <h2>Users</h2>-->
+<!--  <table>-->
+    <%#= form.fields_for :users do |user_form| %>
+<!--      <tr>-->
+<!--        <td><%#= user_form.text_field :name %>-->
+<!--        <td>-->
+          <%#= user_form.label :_destroy, 'remove' %>
+          <%#= user_form.check_box :_destroy %>
+<!--        </td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </table>-->
+  <br/>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
