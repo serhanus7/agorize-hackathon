@@ -5,7 +5,7 @@ class Skill < ApplicationRecord
 
   validates :name,
             format: { with: /\A[A-Za-z_ ]+\z/,
-                      message: "ERROR: only allows letters, numbers or underscores."},
+                      message: "ERROR: only allows letters, spaces or underscores."},
             :uniqueness => true
 
   def self.get_resume
@@ -21,9 +21,5 @@ class Skill < ApplicationRecord
               on skills.id = query.parent
             order by skills.id;"
     ActiveRecord::Base.connection.execute(sql)
-  end
-
-  def self.attributes_protected_by_default
-    []
   end
 end
