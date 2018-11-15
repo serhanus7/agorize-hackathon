@@ -3,6 +3,11 @@ class Skill < ApplicationRecord
   has_many :skills_users
   has_many :users, through: :skills_users
 
+  validates :name,
+            format: { with: /\A[A-Za-z_ ]+\z/,
+                      message: "ERROR: only allows letters, numbers or underscores."},
+            :uniqueness => true
+
   def self.get_resume
     sql = "select skills.id, skills.name, query.points, query.users_count
               from skills
